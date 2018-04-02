@@ -1,16 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="css/style.css" rel="stylesheet" />
-
-	<title>Malico's Page</title>
+	<title>
+		Malico
+	</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/fonts/css/font-awesome.min.css">
 </head>
 <body>
+	<div class="wrap">
+		<div class="bio">
+			<main class="flex">
+				<div class="avatar">
+					<img src="assets/avatar.png" alt="Avatar">
+				</div>
+				<div class="animation flex">
+					<div id="text">
+						Hi. I'm Malico Yong.
+					</div>
+				</div>
+				
+			</main>
+		</div> <!-- Bio -->
+		<div class="content">
+			<div class="content-wrap">
+				<div class="menu-container">
+					<ul class="menu">
+						<li class="active" data-tab="about">About</li>
+						<li data-tab="hire">Hire Me</li>
+						<li data-tab="contact">Contact</li>
+					</ul>
+				</div>
 
-	<script src="js/main.js"></script>
+				<div class="slide about show">
+					Hi,<br />
+					<p>
+					My Name is Ndifon Desmond Y. but most know me as Malico or Klash. I've a Software Developer, Student teacher at HTTTC Bambili and a fan of Photography and Graphic Design.
+					</p>
+					<div style="margin: 10px 0">
+						<button>Read More!</button>
+					</div>
+				</div>
+				<div class="slide hire">
+					First of all, the speed of mmyy animation equal to my typing speed just in case you need a secretary or typist. LOL. 
+					Skills
+					<ul class="skills">
+						<li>PHP - <span class="framework">Laravel</span></li>
+						<li>JS - <span class="framework">JQuery</span></li>
+						<li>SQL</li>
+						<li>C</li>
+						<li>C++</li>
+						<li><span class="desc">html5</span> - <span class="desc">css3</span> - <span class="framework">Bootstrap, 960, W3.css</span></li>
+					</ul>
+					Apart from Program I also Computer Software and Hardware Maintenance, not a pro yet.
+					<div style="margin: 10px 0">
+						<button style="float:left;">Read More</button>
+						<button>Yep. I need your services.</button>
+					</div>
+				</div>
+				<div class="slide contact">
+					<h3>Send me Message</h3>
+					<form>
+						<p>
+							<label>Name</label> <br>
+							<input type="text" name="name" placeholder="John Doe" required>
+						</p>
+						<p>
+							<label>Email</label> <br>
+							<input type="email" name="email" placeholder="foo@bar.com" require>
+						</p>
+						<p>
+							<label>Your Message <small>Please be brief!</small></label> <br>
+							<textarea class="textarea" placeholder="Your Message" required value=""></textarea>					
+						</p>
+						<button type="submit">Send</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		Copyright &copy; 2018, Malico
+
+	</footer>
+	<div class="links">
+		<ul>
+			<li><a href="http://twitter.com/desmondndifon"><span class="fa fa-twitter"></span> Twitter</a></li>
+			<li><a href="http://github.com/malic0"><span class="fa fa-github"></span> Github</a></li>
+			<li><a href="http://malic0.github.io"><span class="fa fa-sitemap"></span> Website</a></li>
+		</ul>
+	</div>
+	<script src="main.js">
+		
+	</script>
 </body>
 </html>
