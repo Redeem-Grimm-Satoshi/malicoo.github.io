@@ -1,7 +1,7 @@
 /*
-	Malico @ 2018
+	Copyright Malico @ 2018
 */
-
+@import 'css/font-awesome.min.css';
 *{
 	margin: 0;
 	box-sizing: border-box;
@@ -21,14 +21,20 @@ button{
 	border-radius: 4px;
 	border:0;
 	color: white;
+	transition-property: opacity box-shadow;
+	transition: 0.2s ease-in;
 	font-weight: 700;
-	background: #f333d0;
+	background:rgb(120, 45, 88) ;
 	cursor: pointer;
 	float: right;
 }
+button:active{
+	border: 0;
+	box-shadow: none;
+}
 button:hover{
 	opacity: 0.9;
-	box-shadow: 1px 0px 5px rgba(0,0,025, 0.8);
+	box-shadow: 1px 0px 10px rgba(255,225,225, 0.3);
 }
 
 body{
@@ -38,6 +44,7 @@ body{
 	font-family: ubuntu, roboto, sans-serif;
 	color: rgb(255,245,245);
 	letter-spacing: 0.05em;
+	font-weight: 100;
 	background-image: url('../assets/bg.jpg');
 	background-size: cover;
 }
@@ -49,7 +56,7 @@ body{
 	display: flex;
 	width: 100%;
 	position: relative;
-	background-color: rgba(099,077,088,0.6);
+	background-color: rgba(25,27,28,0.6);
 	flex-direction: row;
 }
 .bio, .content{
@@ -79,7 +86,7 @@ body{
 	height: 50%;
 	width: 80%;
 	text-align: center;
-	font-size: 180%;
+	font-size: 220%;
 }
 .bio main .avatar{
 	width: 50%;
@@ -128,20 +135,23 @@ ul{
 	height: 80%;
 	width: 100%;
 	font-size: 110%;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.3);
 	margin: 25px;
 }
 /*
 	slides
 */
 .slide{
-	padding: 2em;
+	padding: 1em 2em;
 	height: 100%;
-	visibility: 1;
+	opacity: 0;
+	display: none;
+	transition: opacity 0.5s ease-in-out;
 }
-.about, .hire, .contact{
-	transition-property: opacity;
-	transition: 0.5s ease-in-out;
+.show{
+	display: block !important;
+	opacity: 1 !important;
+	transition: opacity 0.5s ease-in-out;
 }
 /*
 	About
@@ -206,7 +216,21 @@ footer, .links{
 }
 .links ul li{
 	display: inline;
+	font-size: 150%;
+	transition-property: color background;
+	transition: 0.4s ease-in-out;
 	margin: 0 10px;
+	padding: 0.3em;
+}
+.links ul li:hover{
+	border-radius: 50%;
+	background-color: white;
+}
+.links ul li:first-child:hover{
+	color: #55acee;
+}
+.links ul li:nth-child(2):hover{
+	color: #221f1f;
 }
 footer{
 	left: 20px;

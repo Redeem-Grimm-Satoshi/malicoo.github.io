@@ -32,15 +32,13 @@ function clearTab(){
 		if(menuItems[i].classList)
 			menuItems[i].classList.remove('active');
 	}
-	for (var i = 0; i < tabs.length; i++) {
-		document.querySelector('.'+tabs[i]).style.display = 'none';
-		document.querySelector('.'+tabs[i]).style.opacity = 0;
+	for (var i = 0; i < slides.length; i++) {
+		slides[i].classList.remove('show');
 	}
 }
 function makeNewTab(newTab){
 	newTab.classList.add('active');
-	document.querySelector("."+newTab.dataset.tab).style.display = 'block';	
-	document.querySelector("."+newTab.dataset.tab).style.opacity = 1;
+	document.querySelector("."+newTab.dataset.tab).classList.add('show');
 }
 
 /*
@@ -53,8 +51,8 @@ var textHolder = [];
 var textTracker = 1;
 var timer; // Timer global variable
 
-textHolder[0] = 'Hi,';
-textHolder[1] = 'My Name is Malico Klash';
+textHolder[0] = 'Hi.';
+textHolder[1] = 'My Name is Malico Klash.';
 textHolder[2] = "I'm a Software Developer!"
 
 var animation = function (){
@@ -75,7 +73,7 @@ var loadText = function(){
 				setTimeout(
 					function(){
 						removeText();
-					}, 2000);
+					}, 4000);
 			}
 		}, 100);
 	
@@ -95,7 +93,7 @@ var loadText = function(){
  						loadText();
  					}, 1000);
  			}
- 		}, 50);
+ 		}, 40);
  	
  }
 
