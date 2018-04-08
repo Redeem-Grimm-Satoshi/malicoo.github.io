@@ -2,7 +2,6 @@
 	Title: Malico's Portfolio site
 	Author: Malico Klash
 */
-
 "use strict";
 /*
 	Tabs and all its animation
@@ -97,7 +96,20 @@ var loadText = function(){
  	
  }
 
+/*
+	ReadMore
+*/
+var modal = document.querySelectorAll('.modal_button');
 
+for (var i = 0; i < modal.length; i++) {
+	modal[i].addEventListener('click', function (event){
+		activateModal(event.target.dataset.slide);
+	}, false);
+}	
+
+var activateModal = function (modalSlide){
+	
+}
 
 /*
 	Load Events
