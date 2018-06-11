@@ -1,28 +1,58 @@
 /*
-	Copyright Malico @ 2018
+    Copyright Malico @ 2018
 */
 /*General CSS */
+@import url(css/font-awesome.min.css);
+@import url(bootstrap/bootstrap.css);
+ul {
+  list-style: none; }
 
-@import 'css/font-awesome.min.css';
-*{
-	margin: 0;
-	box-sizing: border-box;
-	padding: 0;
-}
-.flex{ /* For Flex boxes */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-small{
-	font-size: 60%;
-}
+img {
+  max-width: 100%; }
 
-.wrap{
-	height: 101vh;
-	width: 100%;
-	overflow-x: hidden;
-}
-.bio{
-	height: 100%;
-}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0; }
+
+body {
+  font-family: "Segoe UI", Ubuntu, "Roboto", sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+  padding: 3% 10%; }
+
+.wrap {
+  position: relative;
+  top: 3%;
+  z-index: 1;
+  background-color: #fff;
+  margin: 0 auto;
+  color: #222027; }
+
+small {
+  font-size: 70%; }
+
+.bio {
+  height: 100%; }
+  .bio main.flex {
+    flex-direction: column; }
+    .bio main.flex .avatar img {
+      height: 300px;
+      width: 300px; }
+
+@media (min-width: 700px) {
+  .bg-top {
+    height: 40vh;
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #222027; } }
+
+/*# sourceMappingURL=style.css.map */
