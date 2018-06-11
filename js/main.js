@@ -50,9 +50,7 @@ var textHolder = [];
 var textTracker = 1;
 var timer; // Timer global variable
 
-textHolder[0] = 'Hi.';
-textHolder[1] = 'My Name is Malico Klash.';
-textHolder[2] = "I'm a Software Developer!"
+textHolder = ["Hi.", "The Name is Malico Klash.", "I'm a Software Developer."]
 
 var animation = function (){
 	loadText();
@@ -75,7 +73,7 @@ var loadText = function(){
 					}, 4000);
 			}
 		}, 100);
-	
+
  }
  var removeText = function(){
  	var animatedText = text.innerHTML;
@@ -85,7 +83,7 @@ var loadText = function(){
  			text.innerHTML = animatedText.substring(0, pointer--);
  			if(pointer < 0){
  				clearInterval(timer);
- 				if(textTracker > textHolder.length) 
+ 				if(textTracker > textHolder.length)
  					textTracker = 1;
  				setTimeout(
  					function (){
@@ -93,7 +91,7 @@ var loadText = function(){
  					}, 1000);
  			}
  		}, 40);
- 	
+
  }
 
 /*
@@ -105,10 +103,10 @@ for (var i = 0; i < modal.length; i++) {
 	modal[i].addEventListener('click', function (event){
 		activateModal(event.target.dataset.slide);
 	}, false);
-}	
+}
 
 var activateModal = function (modalSlide){
-	
+
 }
 
 /*
