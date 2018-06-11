@@ -39,11 +39,15 @@ small {
 
 .bio {
   height: 100%; }
-  .bio main.flex {
-    flex-direction: column; }
-    .bio main.flex .avatar img {
-      height: 300px;
-      width: 300px; }
+.bio main.flex {
+  flex-direction: column;
+  height: 500px; }
+.bio main.flex .avatar img {
+  height: 300px;
+  width: 300px; }
+.bio main.flex .animation {
+  height: 100px;
+  font-size: 205%; }
 
 @media (min-width: 700px) {
   .bg-top {

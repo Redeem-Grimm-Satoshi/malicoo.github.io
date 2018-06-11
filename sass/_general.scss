@@ -38,11 +38,16 @@ small{
     height: 100%;
     main.flex{
         flex-direction: column;
+        height: 500px;
         .avatar{
             img{
                 height: 300px;
                 width: 300px;
             }
+        }
+        .animation{
+            height: 100px;
+            font-size: 205%;
         }
     }
 }
