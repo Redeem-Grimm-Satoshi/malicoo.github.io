@@ -1,4 +1,5 @@
-#  Portfolio Website - <small> <a href="http://malic0.github.io">Link</a> </small>
+#  Portfolio Website 
+
 ## About
 
 ## License
