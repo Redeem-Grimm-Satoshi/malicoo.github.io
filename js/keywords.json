@@ -1,0 +1,14 @@
+[
+	{
+		"btn":"Say Hello.",
+		"keyword": "Hi."
+	}
+	{
+		"btn":false,
+		"keyword": "My Name is Malico Klash."
+	}
+	{
+		"btn":"Hire Me",
+		"keyword": "I'm a software Developer."
+	}
+]

@@ -1,8 +1,11 @@
 // malico.com
+@import url('css/font-awesome.min.css');
 // General
 $theme-color: #595959;
-$font-family: Roboto, Raleway, "Segoe UI", sans-serif;
+$font-family:Lato, Roboto, Raleway, "Segoe UI", sans-serif;
+$border-color: #e1e1e1;
 /* Normalization */
+
 *{
 	box-sizing:border-box;
 	margin: 0;
@@ -17,8 +20,8 @@ img{
 ul{
 	list-style: none;
 }
-.wrap{
-	padding: 10%;
+a{
+	color: $theme-color;
 }
 // Input
 button{
@@ -29,8 +32,130 @@ button{
 	color: white;
 	background: $theme-color;
 }
-
+@mixin border-top{
+	border-top: 1px solid $border-color;
+}@mixin border-bottom{
+	border-bottom: 1px solid $border-color;
+}@mixin border-left{
+	border-left: 1px solid $border-color;
+}@mixin border-right{
+	border-right: 1px solid $border-color;
+}
+@mixin flex-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 //
 body{
 	font-family: $font-family;
+	font-weight: 300;
+}
+.wrap{
+	.bio{
+		@include border-bottom;
+		main{
+			width: 100%;
+			@include flex-center;
+			> *{
+				padding: 15px;
+			}
+			.avatar{
+				@include flex-center;
+				flex-flow: column;
+				width: 50%;
+				@include border-right;
+				img{
+					$side: 300px;
+					height: $side;
+					width: $side; 
+					border-radius: 100%;
+					box-shadow: 0 0 10px #bbb;
+				}
+				.links{
+					margin: 10px;
+					color: black;
+					font-size: 1.5em;
+					ul{
+						display: flex;
+						width: 100px;
+						justify-content: space-around;
+						li{
+							margin: 10px 15px;
+							a{
+								transition: all 0.4s ease;
+								padding: 10px;
+								border-radius: 100%;
+								width: 30px;
+								height: 30px;
+								border: 1px solid $border-color;
+								&:hover{
+									position: relative;
+									top: -7px;
+									background: white;
+									transform: scale(0.5);
+									box-shadow: 0px 7px 10px #afafaf;
+									border: none;
+								}
+							}
+						}
+						li:first-child:hover{
+							a{
+								color: #55ACEE;
+							}
+						}
+						li:nth-child(2):hover{
+							a{
+								color: black;
+							}
+						}
+					}
+				}
+			}
+			.skills{
+				width: 50%;
+				height: 50px;
+				.animation{
+					width: 100%;
+					text-align: center;
+					#text{
+						text-align: center;
+						font-size: 2.5em;
+						margin: 0;
+						padding: 0;
+					}
+					.blink{
+						font-size: 2.5em;
+						animation: blink 0.8s infinite;
+					}
+				}
+			}
+		}
+	} 
+	.footer{
+		display: flex;
+		align-items: center;
+		padding: 0 30px;
+		background-color: #f9f9f9;
+		font-size: 1.1em;
+		height: 100px;
+	}
+}
+// medias
+@media (max-width: 500px){
+
+}
+@keyframes blink{
+	0%{
+		opacity: 1;
+	}
+	30%{
+		opacity: 0;
+	}
+	80%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
 }

@@ -50,6 +50,16 @@ var textHolder = [];
 var textTracker = 1;
 var timer; // Timer global variable
 
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+     document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "keywords.json", true);
+  xhttp.send();
+}
 textHolder[0] = 'Hi.';
 textHolder[1] = 'My Name is Malico Klash.';
 textHolder[2] = "I'm a Software Developer!"
