@@ -1,14 +1,22 @@
 [
 	{
 		"btn":"Say Hello.",
-		"keyword": "Hi."
-	}
+		"keyword": "Hi.",
+		"function": "hello"
+	},
 	{
-		"btn":false,
-		"keyword": "My Name is Malico Klash."
-	}
+		"btn":null,
+		"keyword": "My Name is Malico Klash.",
+		"function": null
+	},
 	{
 		"btn":"Hire Me",
-		"keyword": "I'm a software Developer."
+		"keyword": "I'm a software Developer.",
+		"function": "hire"
+	},
+	{
+		"btn":"Desgn for You",
+		"keyword": "I'm a Graphics Designer.",
+		"function": "hire"
 	}
 ]

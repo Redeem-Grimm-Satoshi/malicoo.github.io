@@ -3,124 +3,107 @@
 	Author: Malico Klash
 */
 "use strict";
-/*
-	Tabs and all its animation
-	--------------------------
-*/
-var menu = document.querySelector('.menu');
-var menuItems = menu.childNodes;
-var tabs = ['about', 'contact', 'hire'];
-var slides = document.querySelectorAll('.slide');
-
-for (var i = 0; i < menuItems.length; i++) {
-	// Adds event listeners to the menu items
-	menuItems[i].addEventListener('click', function (event){
-		event.preventDefault();
-		changeTab(event.target);
-	}, false);
-}
-
-var changeTab = function (element){
-	// This is the function that is invoked when the user clicks on the tabs
-	clearTab();
-	makeNewTab(element);
-}
-
-function clearTab(){
-	for (var i = 0; i < menuItems.length; i++) {
-		if(menuItems[i].classList)
-			menuItems[i].classList.remove('active');
-	}
-	for (var i = 0; i < slides.length; i++) {
-		slides[i].classList.remove('show');
-	}
-}
-function makeNewTab(newTab){
-	newTab.classList.add('active');
-	document.querySelector("."+newTab.dataset.tab).classList.add('show');
-}
-
-/*
-	Animation
-	---------
-	Author: Malico - 2016
-*/
+/*	Animation */
 var text = document.getElementById('text');
-var textHolder = [];
+var button = document.getElementById('btn');
 var textTracker = 1;
 var timer; // Timer global variable
-
+/**
+ * This functions loads the content of keywords
+ * @return void
+ */
 function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-     document.getElementById("demo").innerHTML = xhttp.responseText;
-    }
+	var keywords;
+  	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	    	keywords = xhttp.responseText;
+	    	animation_body(JSON.parse(keywords));
+	    }
   };
-  xhttp.open("GET", "keywords.json", true);
+  xhttp.open("GET", "js/keywords.json", true);
   xhttp.send();
 }
-textHolder[0] = 'Hi.';
-textHolder[1] = 'My Name is Malico Klash.';
-textHolder[2] = "I'm a Software Developer!"
-
+/**
+ * starts all the functions that have to do with animation 
+ * @return void
+ */
 var animation = function (){
-	loadText();
-
+	loadDoc();
 }
-var loadText = function(){
-	var animatedText = textHolder[textTracker - 1];
-	var pointer = 0;
-	text.innerHTML = "";
-	timer = setInterval(
-		function(){
-			text.innerHTML += animatedText[pointer];
-			pointer++;
-			if(pointer == animatedText.length){
-				clearInterval(timer);
-				textTracker++;
-				setTimeout(
-					function(){
-						removeText();
-					}, 4000);
-			}
-		}, 100);
-	
- }
- var removeText = function(){
- 	var animatedText = text.innerHTML;
- 	var pointer = animatedText.length;
- 	timer = setInterval(
- 		function(){
- 			text.innerHTML = animatedText.substring(0, pointer--);
- 			if(pointer < 0){
- 				clearInterval(timer);
- 				if(textTracker > textHolder.length) 
- 					textTracker = 1;
- 				setTimeout(
- 					function (){
- 						loadText();
- 					}, 1000);
- 			}
- 		}, 40);
- 	
- }
-
-/*
-	ReadMore
-*/
-var modal = document.querySelectorAll('.modal_button');
-
-for (var i = 0; i < modal.length; i++) {
-	modal[i].addEventListener('click', function (event){
-		activateModal(event.target.dataset.slide);
-	}, false);
-}	
-
-var activateModal = function (modalSlide){
-	
+// key functions 
+button.addEventListener("click", function (){
+	this.dataset.function();
+})
+function hello(){
+	console.log("hello");
 }
-
+function hire(){
+	console.log('hire');
+}
+/**
+ * Actual animation body, loads and removes text
+ * @param  {objects} slides each animation object [btn, text, function name]
+ * @return {void}
+ */
+var animation_body = function (slides){
+	/**
+	 * Toolges the content of the button
+	 * @param  {text} btn_text innerhtml
+	 * @return {void}          
+	 */
+	var toogleButton = function (btn_text = null){
+		if(btn_text == null){
+			button.classList.remove('btn-show');
+			button.classList.add('btn-hide');
+		} else {
+			button.innerHTML = btn_text;
+			button.classList.remove('btn-hide');
+			button.classList.add('btn-show');
+		}
+	}
+	var loadText = function(){
+		toogleButton(slides[textTracker - 1].btn);
+		var animatedText = slides[textTracker - 1].keyword;
+		var pointer = 0;
+		text.innerHTML = "";
+		button.dataset.function = slides[textTracker - 1].function;
+		timer = setInterval(
+			function(){
+				text.innerHTML += animatedText[pointer];
+				pointer++;
+				if(pointer == animatedText.length){
+					clearInterval(timer);
+					textTracker++;
+					setTimeout(
+						function(){
+							removeText(slides.length);
+						}, 4000);
+				}
+			}, 100);
+		
+	 }
+	 var removeText = function(n){
+	 	toogleButton();
+	 	var animatedText = text.innerHTML;
+	 	var pointer = animatedText.length;
+	 	timer = setInterval(
+	 		function(){
+	 			text.innerHTML = animatedText.substring(0, pointer--);
+	 			if(pointer < 0){
+	 				clearInterval(timer);
+	 				if(textTracker >n) 
+	 					textTracker = 1;
+	 				setTimeout(
+	 					function (){
+	 						loadText();
+	 					}, 1000);
+	 			}
+	 		}, 40);
+	 	
+	 }
+ 	loadText();
+}
 /*
 	Load Events
 */
