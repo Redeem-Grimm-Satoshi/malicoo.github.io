@@ -32,6 +32,7 @@ ul{
 }
 a{
 	color: $theme-color;
+	text-decoration: none;
 }
 // Input
 button{
@@ -76,7 +77,6 @@ body{
 				@include flex-center;
 				flex-flow: column;
 				width: 50%;
-				@include border-right;
 				img{
 					$side: 250px;;
 					height: $side;
@@ -172,6 +172,7 @@ body{
 					h4{
 						font-family: serif;
     					letter-spacing: 0.1em;
+    					opacity: 0.6;
 					}
 					a{
 						text-decoration: none;
@@ -190,11 +191,28 @@ body{
 				    box-shadow: 0 0 7px $border-color;
 				    &.skills{
 				    	ul{
+				    		display: flex;
+				    		flex-wrap: wrap;
 				    		li{
+				    			    width: 50%;
+								    text-align: center;
+								    margin: 7px 0;
+								    display: flex;
+								    flex-flow: column;
+								    justify-content: center;
 				    			.framework{
-				    				opacity: 0.6;
+				    				    opacity: 0.3;
+									    font-style: italic;
+									    font-weight: 500;
+									    transform: scale(0.8);
 				    			}
 				    		}
+				    	}
+				    }
+				    &.slider{
+				    	width: 66.67%;
+				    	h2{
+				    		text-align: center;
 				    	}
 				    }
 				    &.contact{
@@ -234,7 +252,7 @@ body{
 		background-color: white;
 		@include border-top;
 		font-size: 1.1em;
-		height: 100px;
+		height: 60px;
 	}
 }
 
@@ -263,8 +281,38 @@ body{
 	}
 }
 // medias
-@media (max-width: 500px){
-
+@media (max-width: 550px){
+	.wrap{
+		main{
+			flex-flow: column;
+			.skills{
+				.animation{
+					height: auto !important;
+				}
+			}
+		}
+		.content{
+			.content-wrap{
+				flex-flow: column;
+				align-items: center;
+				.slide{
+					width: 100% !important;
+					&.contact{
+						form{
+							width: 80%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media(min-width: 550px){
+	main{
+		.avatar{
+			@include border-right;
+		}
+	}
 }
 @keyframes blink{
 	0%{

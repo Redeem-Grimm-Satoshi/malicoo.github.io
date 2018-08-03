@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<div class="bio">
+		<div class="bio" id="top">
 			<main class="flex">
 				<div class="avatar">
 					<img src="assets/avatar.png" alt="Avatar">
@@ -37,7 +37,7 @@
 					</div>
 					<hr>
 					<div class="animation">
-						<button id="btn">Hire Me</button>
+						<a href="#contact" id="btn">Hire Me</a>
 					</div>
 				</div>		
 			</main>
@@ -51,23 +51,28 @@
 					A 19 Year old, student teacher, born to a family of 4, works for <a href="https://desgn-inc.github.io">Desgn Inc.</a> that spends more hours on Sublime Text, Chrome and Inskcape than any other person he knows. <br>
 					Yes. Maybe am NERD. Either way I don't give F**k
 					</p>
-					<div style="margin: 10px 0">
-						<button class="modal_button" data-slide="about">Read More!</button>
-					</div>
 				</div>
 				<div class="slide skills">
 						<h4 style="color: #13ca86">Skills</h4>
 						<hr>
 						<ul class="skills">
-							<li>PHP - <span class="framework">Laravel</span></li>
-							<li>JS - <span class="framework">JQuery, VueJS</span></li>
-							<li>SQL - <span class="framework">MYSQL</span></li>
+							<li>PHP <span class="framework">Laravel</span></li>
+							<li>JS <span class="framework">JQuery, VueJS</span></li>
+							<li>SQL  <span class="framework">MYSQL</span></li>
 							<li>C/C++</li>
 							<li>Python</li>
-							<li>HTML5 -CSS3 - <span class="framework">Bootstrap, 960, W3.css, Google Material, </span></li>
+							<li>Pascal</li>
+							<li>Graphics <span class="framework">Gimp, Inkscape, Photoshop, Illustrator</span></li>
+							<li>HTML5 -CSS3 <span class="framework">Bootstrap, 960, W3.css, Google Material, </span></li>
 						</ul>
 				</div>
-				<div class="slide contact">
+				<div class="slide slider">
+					<h4>What I've Done!</h4>
+					<hr>
+						<H2>Reference Desgn Inc.</H2>
+						<a href="https://desgn-inc.github.io">Visit Desgn Inc.</a>
+				</div>
+				<div class="slide contact" id="contact">
 					<h4 style='color: #AB184A;'>Leave a Message</h4>
 					<hr>
 					<form action="mailto:malico.yong@gmail.com">
@@ -92,6 +97,7 @@
 		<p>
 			Copyright &copy; 2018, Malico
 		</p>
+		<a href="#top"><span class="fa fa-arrow-up"></span></a>
 		<p>
 			<a href="https://desgn-inc.github.io">
 				<img height="35px" style="width: auto !important" src="assets/desgn-inc.png" alt="Desgn Inc"></a></p>
@@ -99,5 +105,24 @@
 </div>
 	<script src="http://malico.com/cdn/jquery/jquery.min.js"></script>
 	<script src="js/main.min.js"></script>
+	<script>
+	        $(document).on('click', 'a[href^="#"]', function(e) {
+            var id = $(this).attr('href');
+            document.querySelector(id).classList.add('fade');
+
+            var $id = $(id);
+            if ($id.length === 0) {
+                return;
+            }
+            e.preventDefault();
+            
+            var pos = $id.offset().top;
+            
+            $('body, html').animate({scrollTop: pos - 100}, 700);
+            setTimeout(function(){
+                document.querySelector(id).classList.remove('fade');
+            }, 2000)
+        });
+    </script>
 </body>
 </html>
