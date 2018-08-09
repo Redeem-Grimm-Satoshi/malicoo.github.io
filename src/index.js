@@ -5,7 +5,7 @@
 "use strict";
 /*	Animation */
 var text = document.getElementById('text');
-var button = document.getElementById('btn');
+var button = document.querySelector("#btn");
 var textTracker = 1;
 var timer; // Timer global variable
 /**
@@ -21,26 +21,14 @@ function loadDoc() {
 	    	animation_body(JSON.parse(keywords));
 	    }
   };
-  xhttp.open("GET", "js/keywords.json", true);
+  xhttp.open("GET", "js/keywords.json");
   xhttp.send();
 }
 /**
  * starts all the functions that have to do with animation 
  * @return void
  */
-var animation = function (){
-	loadDoc();
-}
-// key functions 
-button.addEventListener("click", function (){
-	this.dataset.function();
-})
-function hello(){
-	console.log("hello");
-}
-function hire(){
-	console.log('hire');
-}
+
 /**
  * Actual animation body, loads and removes text
  * @param  {objects} slides each animation object [btn, text, function name]
@@ -104,9 +92,24 @@ var animation_body = function (slides){
 	 }
  	loadText();
 }
-/*
-	Load Events
-*/
-window.onload = function(){
-	animation();
-};
+loadDoc();
+
+
+function fade_ins(){
+	var slides = document.getElementsByClassName('slide');
+	
+	for(var j = 0; j < slides.length; j++){
+		slides[j].classList.add('slide-hide');
+	}	
+	var time;
+	var j = 1;
+	time = setInterval(function (){
+		slides[j-1].classList.remove('slide-hide');
+		slides[j-1].classList.add('slide-show');
+		j++;
+		if(j > slides.length){
+			clearInterval(time);
+		}
+	}, 1000)
+}
+fade_ins();

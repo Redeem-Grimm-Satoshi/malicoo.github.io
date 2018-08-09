@@ -37,14 +37,15 @@
 					</div>
 					<hr>
 					<div class="animation">
-						<a href="#contact" id="btn">Hire Me</a>
+						<a href="#contact" id="btn" >Hire Me</a>
 					</div>
 				</div>		
 			</main>
 		</div> <!-- Bio -->
 		<div class="content">
 			<div class="content-wrap">
-				<div class="slide about show">
+				<div class="db-slide">				
+					<div class="slide s-slide about show">
 					<h4 style="color: #c58207">About Me</h4>
 					<hr>
 					<p>
@@ -52,6 +53,13 @@
 					Yes. Maybe am NERD. Either way I don't give F**k
 					</p>
 				</div>
+				<div class="slide s-slide slider">
+					<h4>What I've Done!</h4>
+					<hr>
+						<H2>Reference Desgn Inc.</H2>
+						<a href="https://desgn-inc.github.io">Visit Desgn Inc.</a>
+				</div>
+			</div>
 				<div class="slide skills">
 						<h4 style="color: #13ca86">Skills</h4>
 						<hr>
@@ -61,34 +69,32 @@
 							<li>SQL  <span class="framework">MYSQL</span></li>
 							<li>C/C++</li>
 							<li>Python</li>
+							<li>OS <span class="framework">Linux(Fedora, Ubuntu, Mint) , Windows (XP - 10), MacOS</span></li>
 							<li>Pascal</li>
+							<li>Version Control <span class="framework">Git</span></li>
 							<li>Graphics <span class="framework">Gimp, Inkscape, Photoshop, Illustrator</span></li>
 							<li>HTML5 -CSS3 <span class="framework">Bootstrap, 960, W3.css, Google Material, </span></li>
 						</ul>
 				</div>
-				<div class="slide slider">
-					<h4>What I've Done!</h4>
-					<hr>
-						<H2>Reference Desgn Inc.</H2>
-						<a href="https://desgn-inc.github.io">Visit Desgn Inc.</a>
-				</div>
+
 				<div class="slide contact" id="contact">
 					<h4 style='color: #AB184A;'>Leave a Message</h4>
 					<hr>
-					<form action="mailto:malico.yong@gmail.com">
+					<form action="mailto:malico.yong@gmail.com" id="form">
+						<input type="hidden" id="btn-value" name="btn-value" value="Hi">
 						<p>
 							<label>Name</label> <br>
-							<input type="text" name="name" placeholder="John Doe" required autocomplete="off">
+							<input  id="name" type="text" name="name" placeholder="John Doe" required autocomplete="off">
 						</p>
 						<p>
 							<label>Email</label> <br>
-							<input type="email" name="email" placeholder="john.doe@foo.bar" required autocomplete="off">
+							<input id="email" type="email" name="email" placeholder="john.doe@foo.bar" required autocomplete="off">
 						</p>
 						<p>
 							<label>Your Message <small>Please be brief!</small></label> <br>
-							<textarea class="textarea" placeholder="Your Message" required value=""></textarea>					
+							<textarea id="msg" class="textarea" placeholder="Your Message" required value=""></textarea>					
 						</p>
-						<button type="submit">Send</button>
+						<a href="" id="send" class="btn">Send</a>
 					</form>
 				</div>
 			</div>
@@ -103,7 +109,7 @@
 				<img height="35px" style="width: auto !important" src="assets/desgn-inc.png" alt="Desgn Inc"></a></p>
 	</section>
 </div>
-	<script src="http://malico.com/cdn/jquery/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="js/main.min.js"></script>
 	<script>
 	        $(document).on('click', 'a[href^="#"]', function(e) {
@@ -123,6 +129,21 @@
                 document.querySelector(id).classList.remove('fade');
             }, 2000)
         });
+    </script>
+
+    <script type="text/javascript">
+    	$('#btn').click(function (){
+    		$('#btn-value').val($(this).data('function'));
+    		$('#name').focus();
+    	});
+    	$('#form').submit(function (){
+
+    	});
+    	$('#send').click(function (){
+    		$(this).attr('href' , "mailto:malico.yong@gmail.com" + "?subject=" + $('#btn-value').val() + 
+    			"&body=%0ANAME: " + $('#name').val() + "%0APURPOSE: " + $('#btn-value').val() + "%0A----------------%0A%0A%0AMESSAGE:%0A----------------%0A" + $('#msg').val());
+    		$('.contact').hide();
+    	});
     </script>
 </body>
 </html>

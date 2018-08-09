@@ -2,7 +2,7 @@
 	{
 		"btn":"Say Hello.",
 		"keyword": "Hi.",
-		"function": "hello"
+		"function": "Say Hello to Klash!"
 	},
 	{
 		"btn":null,
@@ -12,11 +12,11 @@
 	{
 		"btn":"Hire Me",
 		"keyword": "I'm a software Developer.",
-		"function": "hire"
+		"function": "Hire Developer [web]"
 	},
 	{
 		"btn":"Desgn for You",
 		"keyword": "I'm a Graphics Designer.",
-		"function": "hire"
+		"function": "Hire Graphics Designer"
 	}
 ]
