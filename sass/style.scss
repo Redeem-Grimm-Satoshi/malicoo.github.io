@@ -4,6 +4,10 @@
 $theme-color: #595959;
 $font-family:Lato, Roboto, Raleway, "Segoe UI", sans-serif;
 $border-color: #e1e1e1;
+label{
+	font-weight: 500;
+	color: $theme-color + #333333;
+}
 /* Normalization */
 hr{
 	outline: 0;
@@ -35,7 +39,7 @@ a{
 	text-decoration: none;
 }
 // Input
-button{
+button, .btn{
 	padding: 0.818em 0.909em;
 	cursor: pointer;
 	border: 0;
@@ -168,6 +172,18 @@ body{
 			flex-wrap: wrap;
 			justify-content: center;
 			overflow: hidden;
+			> *{
+				width: 33.3%;
+			}
+			.db-slide{
+				margin: 0 10px;
+				display: flex;
+				flex-flow: column;
+				.s-slide{
+					width: 100% !important;
+					height: auto !important;
+				}
+			}
 			.slide{
 					h4{
 						font-family: serif;
@@ -179,10 +195,10 @@ body{
 						font-weight: 500;
 						font-style: italic;
 					}
-				    width: 33.333%;
 				    display: flex;
 				    padding: 1em 1.5em 3em;
 				    line-height: 1.7;
+				    height: 100%;
 				    background: white;
 				    flex-flow: column;
 				    align-items: center;
@@ -210,7 +226,7 @@ body{
 				    	}
 				    }
 				    &.slider{
-				    	width: 66.67%;
+				    	
 				    	h2{
 				    		text-align: center;
 				    	}
@@ -225,13 +241,13 @@ body{
 					    			margin: 7px 0;
 					    			border: 1px solid $border-color;
 					    			width: 100%;
-					    			transition: all 0.3s ease;
+					    			transition: all 0.5s ease-in-out;
 					    			&:focus{
 					    				background: white;
 					    				position: relative;
-					    				top: 5px;
+					    				top: 3px;
 					    				border-color: white;
-					    				box-shadow: 0 0 10px $border-color;
+					    				box-shadow: 0 0 15px $border-color - #222222;
 					    			}
 					    		}
 					    		textarea{
@@ -265,11 +281,24 @@ body{
  	height: 0;
  	animation: fade-out .5s ease;
 }
+.slide-hide{
+	opacity: 0;
+	height: 0 !important;
+}
+.slide-show{
+	height: auto;
+	animation: fade-in 2.5s ease-in-out;
+}
 @keyframes fade-in{
-	from {
+	0%{
 		opacity: 0;
+		box-shadow: 0;
 	}
-	to {
+	70%{
+		opacity: 0.9;
+		box-shadow:none;
+	}
+	100% {
 		opacity: 1;
 	}
 }
@@ -281,22 +310,75 @@ body{
 	}
 }
 // medias
-@media (max-width: 550px){
+@media(max-width: 768px){
 	.wrap{
 		main{
 			flex-flow: column;
 			.skills{
 				.animation{
 					height: auto !important;
+					> *{
+						height: 100%;
+					}
 				}
 			}
 		}
 		.content{
+			padding: 25px 35px;
 			.content-wrap{
 				flex-flow: column;
 				align-items: center;
+				.db-slide{
+					width: 100%;
+					flex-flow: row;
+					.slide{
+						width: 50% !important;
+						height: 100% !important;
+					}
+				}
 				.slide{
 					width: 100% !important;
+					&.skills{
+						ul{
+							li{
+								width: 100%;
+							}
+						}
+					}
+					&.contact{
+						form{
+							width: 80%;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+@media (max-width: 550px){
+	.wrap{
+		.content{
+			padding: 10px 15px;
+			.content-wrap{
+				flex-flow: column;
+				align-items: center;
+				.db-slide{
+					width: 100%;
+					flex-flow: column;
+					.slide{
+						width: 100% !important;
+					}
+				}
+				.slide{
+					width: 100% !important;
+					&.skills{
+						ul{
+							li{
+								width: 100%;
+							}
+						}
+					}
 					&.contact{
 						form{
 							width: 80%;
@@ -307,7 +389,7 @@ body{
 		}
 	}
 }
-@media(min-width: 550px){
+@media(min-width: 768px){
 	main{
 		.avatar{
 			@include border-right;
