@@ -101,8 +101,46 @@
 	</section>
 </div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<<<<<<< HEAD
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.min.js"></script>
 	<script src="js/main.min.js"></script>
+=======
+	<script src="js/main.min.js"></script>
+	<script>
+	        $(document).on('click', 'a[href^="#"]', function(e) {
+            var id = $(this).attr('href');
+            document.querySelector(id).classList.add('fade');
+
+            var $id = $(id);
+            if ($id.length === 0) {
+                return;
+            }
+            e.preventDefault();
+            
+            var pos = $id.offset().top;
+            
+            $('body, html').animate({scrollTop: pos - 100}, 700);
+            setTimeout(function(){
+                document.querySelector(id).classList.remove('fade');
+            }, 2000)
+        });
+    </script>
+
+    <script type="text/javascript">
+    	$('#btn').click(function (){
+    		$('#btn-value').val($(this).data('function'));
+    		$('#name').focus();
+    	});
+    	$('#form').submit(function (){
+
+    	});
+    	$('#send').click(function (){
+    		$(this).attr('href' , "mailto:malico.yong@gmail.com" + "?subject=" + $('#btn-value').val() + 
+    			"&body=%0ANAME: " + $('#name').val() + "%0APURPOSE: " + $('#btn-value').val() + "%0A----------------%0A%0A%0AMESSAGE:%0A----------------%0A" + $('#msg').val());
+    		$('.contact').hide();
+    	});
+    </script>
+>>>>>>> 141c5561525faa12195f2cc266ab622407b1446a
 </body>
 </html>
