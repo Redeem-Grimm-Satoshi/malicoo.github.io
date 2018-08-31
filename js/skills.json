@@ -1,0 +1,42 @@
+[
+	{
+		"skill":"PHP",
+		"framework": "Laravel"
+	},
+	{
+		"skill":"JS",
+		"framework": "jQuery, VueJS"
+	},
+	{
+		"skill":"SQL",
+		"framework": "mySQL"
+	},
+	{
+		"skill":"Python",
+		"framework": null
+	},
+	{
+		"skill":"C/C++",
+		"framework": null
+	},
+	{
+		"skill":"Pascal",
+		"framework": null
+	},
+	{
+		"skill":"HTML5 -CSS3",
+		"framework": "Bootstrap, 960, W3.css, Google Material..."
+	},
+	{
+		"skill":"OS",
+		"framework": "Linux(Fedora, Ubuntu, Mint) , Windows (XP - 10), MacOS"
+	},
+	{
+		"skill":"Version Control",
+		"framework": "Git"
+	},
+	{
+		"skill":"Graphics",
+		"framework": "Gimp, Inkscape, Photoshop, Illustrator"
+	}
+]

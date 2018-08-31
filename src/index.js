@@ -110,6 +110,80 @@ function fade_ins(){
 		if(j > slides.length){
 			clearInterval(time);
 		}
-	}, 1000)
+	}, 700);
+	loadSkills();
 }
 fade_ins();
+
+
+$(document).on('click', 'a[href^="#"]', function(e) {
+    var id = $(this).attr('href');
+    document.querySelector(id).classList.add('fade');
+
+    var $id = $(id);
+    if ($id.length === 0) {
+        return;
+    }
+    e.preventDefault();
+    
+    var pos = $id.offset().top;
+    
+    $('body, html').animate({scrollTop: pos - 100}, 700);
+    setTimeout(function(){
+        document.querySelector(id).classList.remove('fade');
+    }, 2000)
+});
+$('#btn').click(function (){
+	$('#btn-value').val($(this).data('function'));
+	//$('#name').focus();
+});
+$('#form').submit(function (){
+
+});
+$('#send').click(function (){
+	$(this).attr('href' , "mailto:malico.yong@gmail.com" + "?subject=" + $('#btn-value').val() + 
+		"&body=%0ANAME: " + $('#name').val() + "%0APURPOSE: " + $('#btn-value').val() + "%0A----------------%0A%0A%0AMESSAGE:%0A----------------%0A" + $('#msg').val());
+	$('.contact').slideToggle();
+	modal();
+});
+
+function modal(){
+	 swal({
+        title: 'Confirm Message',
+        text: "Yeah. wait for it, your email client is loading ...",
+        type: 'success',
+    }).then((result) => {
+        swal(
+            'Thank',
+            'Just Hit send, I\'ll talk to you:)',
+            'info'
+        )
+    })
+}
+
+function loadSkills() {
+	var skills;
+  	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	    if (xhttp.readyState == 4 && xhttp.status == 200) {
+	    	skills = xhttp.responseText;
+	    	skills_body(JSON.parse(skills));
+	    }
+  };
+  xhttp.open("GET", "js/skills.json");
+  xhttp.send();
+}
+function skills_body(skills){
+		var i = 0;
+
+		var t = setInterval(function (){
+			if(skills[i].framework != null){
+				$('.skills.list').append("<li class='slide-show'>" + skills[i].skill + "  <span class='framework'>" + skills[i].framework  + "</span></li>");
+			} else{
+				$('.skills.list').append("<li class='slide-show'>" + skills[i].skill + "</li>");
+			}
+			i++;
+			if(i == skills.length ) closeInterval(t);
+		}, 500);
+}
+
