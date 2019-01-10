@@ -30,8 +30,6 @@ import router from "./router";
  * App
  */
 
-const i18n = vuei18n;
-
 new Vue({
     router,
     render: h => h(App)
