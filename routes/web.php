@@ -12,4 +12,13 @@
 */
 
 // Auth::routes();
-Route::get('/{any}', 'HomeController@index')->name('home')->where('any', '.*');
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ],
+    function () {
+        Route::get('/', 'HomeController@index');
+        Route::get('/{any}', 'HomeController@index')->name('home')->where('any', '.*');
+    }
+);
