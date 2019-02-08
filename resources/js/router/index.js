@@ -4,8 +4,8 @@ import home from '@/pages/home';
 import blog from '@/pages/blog';
 import layout from '@/pages/layout';
 
-const locale = require('browser-locale')();
-const localeLang = (locale || 'en-US').substring(0, 2);
+// Language
+let lang = window.malico.lang;
 
 let router = new VueRouter({
 
@@ -14,24 +14,9 @@ let router = new VueRouter({
     routes: [
 
         {
-            path: '*',
-            redirect: `/${localeLang}/`
-        },
-
-        {
-            path: '/blog',
-            redirect: `/${localeLang}/~`
-        },
-
-        {
-            path: '/~',
-            redirect: `/${localeLang}/~`
-        },
-
-
-        {
-            path: '/:lang',
+            path: `/${lang}/`,
             component: layout,
+
             children: [
 
                 {
@@ -39,6 +24,13 @@ let router = new VueRouter({
                     component: blog,
                     alias: 'blog',
                     name: 'blog',
+                },
+
+                {
+                    path: '$',
+                    component: blog,
+                    alias: 'work',
+                    name: 'work',
                 },
 
                 {

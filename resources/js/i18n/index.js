@@ -3,8 +3,9 @@ import VueI from 'vue-i18n';
 import messages from './messages';
 
 Vue.use(VueI);
-const i18n = new VueI({
-    locale: 'en',
+
+let i18n = new VueI({
+    locale: window.malico.lang, // set locale,
     fallbackLocale: 'en',
     messages
 });

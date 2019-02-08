@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+
+q {
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+
+a {
+    text-decoration: none;
+    color: var(--color-link);
+    outline: none;
+}
+
 @tailwind preflight;
 
 @tailwind components;

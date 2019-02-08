@@ -8,9 +8,20 @@
     </div>
 </template>
 <script>
+import TweenMax from 'gsap/TweenMax';
+
 export default {
 
-    name: 'hamburguer'
+    name: 'hamburguer',
+
+    mounted() {
+        TweenMax.staggerFrom(
+            '.hamburguer__line',
+            0.8, {
+                left: -20,
+            }, 0.2)
+    }
+
 }
 
 </script>
