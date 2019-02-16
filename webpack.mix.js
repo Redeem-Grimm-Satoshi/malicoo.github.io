@@ -23,6 +23,29 @@ mix
         plugins: [
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         ],
+
+        module: {
+
+            rules: [
+
+                {
+                    test: /\.(glsl|frag|vert)$/,
+                    use: ['glslify-import-loader', 'raw-loader', 'glslify-loader']
+                },
+
+                {
+                    test: /\.js$/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env'],
+                            plugins: ['@babel/plugin-syntax-dynamic-import']
+                        }
+                    },
+                    exclude: /node_modules/
+                }
+            ]
+        }
     });
 
 mix
@@ -33,5 +56,5 @@ mix
 
 mix
     .browserSync({
-        proxy: 'malico.m'
+        proxy: 'malico.test'
     });
