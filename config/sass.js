@@ -12,8 +12,8 @@ let colors = {
     'green': '#3ea265',
     'red': '#ef5753',
 
-    'primary': '#4040c8',
-    'primary-dark': '#28287f',
+    'primary': '#d8417d',
+    'primary-dark': '#0d9255',
 };
 
 module.exports = {
@@ -115,6 +115,7 @@ module.exports = {
 
     borderWidths: {
         default: '1px',
+        '1': '1px',
         '0': '0',
         '2': '2px',
         '4': '4px',
