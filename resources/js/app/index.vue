@@ -1,18 +1,13 @@
 <template>
     <div class="wrap">
-        <div class="text-center py-4 lg:px-4">
-            <div class="p-2 bg-indigo-darker items-center text-indigo-lightest leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                <span class="flex rounded-full bg-primary uppercase px-2 py-1 text-xs text-contrast font-bold mr-3">New</span>
-                <span class="font-semibold mr-2 text-left flex-auto">Site is still under constraction</span>
-                !
-            </div>
+        <div class="pageloader bg-contrast justify-center items-center" :class="{ 'fixed flex': !loaded, 'hidden':loaded}">
+            <div uk-spinner></div>
         </div>
-        <router-view class="fade"></router-view>
+        <router-view class="mt-8" v-if="loaded"></router-view>
         <foot-bar />
     </div>
 </template>
 <script>
-import TweenMax from 'gsap/TweenMax';
 import FootBar from '@/comp/FootBar';
 
 export default {
@@ -21,12 +16,41 @@ export default {
         FootBar
     },
 
+    data() {
+        return {
+            loaded: false
+        }
+    },
+
+    head: {
+        title: {
+            complement: 'Malico'
+        }
+    },
+
     mounted() {
-        TweenMax.from('.fade', 2, {
-            opacity: 0,
-            ease: Back.easeOut
-        })
+        let self = this;
+        document.onreadystatechange = () => {
+            if (document.readyState == "complete") {
+                setTimeout(
+                    function() {
+                        self.loaded = true;
+                    }, 1000);
+            }
+        }
     }
 }
 
 </script>
+<style>
+.pageloader {
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+</style>

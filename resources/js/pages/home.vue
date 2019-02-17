@@ -1,13 +1,35 @@
 <template>
     <div class="home">
         <nav-bar />
-        <div class="pt-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
+        <moi />
     </div>
 </template>
+<script>
+import projects from './comp/projects';
+import moi from './comp/moi';
+
+
+export default {
+
+    components: {
+        projects,
+        moi
+    },
+
+    head: function (){
+return {
+title: {
+inner: this.$t('home.title')
+},
+}
+}
+
+}
+
+</script>
+<style type="text/css">
+.slide {
+    filter: blur(5);
+}
+
+</style>

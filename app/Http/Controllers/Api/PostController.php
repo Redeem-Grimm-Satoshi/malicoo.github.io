@@ -17,19 +17,20 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        $paginate = 5;
         if ($request->filled('cat')) {
             $tag = Tag::where('slug', $request->cat)->first();
 
             $posts = $tag->posts()
                         ->with(['author','tags'])
                         ->live()
-                        ->orderBy('publish_date', 'DESC')
-                        ->paginate(3);
+                        ->orderBy('updated_at', 'DESC')
+                        ->paginate($paginate);
         } else {
             $posts = Post::with(['author','tags'])
                     ->live()
-                    ->orderBy('publish_date', 'DESC')
-                    ->paginate(3);
+                    ->orderBy('updated_at', 'DESC')
+                    ->paginate($paginate);
         }
 
         return PostResource::collection($posts);
