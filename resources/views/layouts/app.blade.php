@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
     <script>
         window.malico = {
-            lang: '{{ App::getLocale()}}'
+            lang: '{{ App::getLocale()}}',
+            instaKey: "{{ config('services.instagram.key') }}"
         }
     </script>
 

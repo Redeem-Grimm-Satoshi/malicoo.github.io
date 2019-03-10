@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get("/posts", "Api\PostController@index");
 Route::get("/categories", "Api\PostController@categories");
 Route::get("/post/{slug}", "Api\PostController@show");
+
+Route::match(['get', 'post'], '/contact', "ContactController@store");

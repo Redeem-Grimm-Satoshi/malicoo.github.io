@@ -36,6 +36,9 @@
                             <network class="mx-1 cursor-pointer" network="reddit">
                                 <span uk-icon="icon: reddit"></span>
                             </network>
+                            <network network="whatsapp" class="mx-1 cursor-pointer">
+                                <span uk-icon="icon: whatsapp"></span>
+                            </network>
                         </div>
                     </social-sharing>
                 </div>
@@ -43,12 +46,16 @@
             <sidebar uk-parallax="opacity: 0,1; viewport: 0.1" />
             <div :class="'w-2/3'" id="target">
                 <div v-html="post.body" class="wysiwyg"></div>
+                <div class="mt-8">
+                    <fb-comment :url="'malico.tk/blog/'+post.slug" />
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
 import sidebar from './sidebar';
+import FbComment from 'vue-facebook/dist/components/FbComment.vue'
 export default {
 
     props: {
@@ -66,13 +73,16 @@ export default {
         }
     },
 
-    components: {
-        sidebar
-    },
 
     mounted() {
         this.fetch();
         this.events();
+        this.register();
+    },
+
+    components: {
+        sidebar,
+        FbComment
     },
 
     data() {
@@ -92,6 +102,14 @@ export default {
             window.addEventListener('scroll', self.scrollPage);
         },
 
+        register(d = document, s = 'script', id = 'facebook-jssdk') {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2';
+            fjs.parentNode.insertBefore(js, fjs);
+        },
         scrollPage() {
             let scrollVal = this.scrollY();
             if (scrollVal <= (window.innerHeight / 2)) {

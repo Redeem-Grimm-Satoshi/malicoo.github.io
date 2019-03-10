@@ -27,6 +27,7 @@ export default {
     },
 
     mounted() {
+        this.fetch();
         TweenMax.from(
             '.title',
             1, {
@@ -34,6 +35,23 @@ export default {
                 opacity: 0.5,
                 delay: 1
             })
+    },
+
+    methods: {
+        fetch() {
+            let user = 'malic0';
+
+            let url = 'https://api.github.com/users/' + user + '/repos';
+
+            axios
+                .get(url)
+                .then(
+                    (response) => {
+                        alert('Success')
+                    }
+                )
+                .catch(response => (console.log(response.data)))
+        }
     }
 
 }

@@ -44,4 +44,7 @@ return [
         'key' => 'ee547db0d4d39ba037c8203ee907b2b3526d91f36f2ff27f9daa7ff4bf906a25',
     ],
 
+    'instagram' => [
+        'key' => '5457495621.1677ed0.0e868ad46c0241d0886f625a507eb614']
+
 ];

@@ -43,17 +43,17 @@
                                 </div>
                             </div>
                             <div class="w-1/2">
-                                <form>
+                                <form @submit.prevent="submit">
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                            <input class="uk-input hover:border-primary" type="text" placeholder="Name">
+                                            <input v-model="form.name" class="uk-input hover:border-primary" type="text" placeholder="Name">
                                         </div>
                                     </div>
                                     <div class="uk-margin">
                                         <div class="uk-inline">
                                             <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                                            <input class="uk-input hover:border-primary" type="email" placeholder="Email" required>
+                                            <input v-model="form.email" class="uk-input hover:border-primary" type="email" placeholder="Email" required>
                                         </div>
                                     </div>
                                     <div class="uk-margin">
@@ -76,6 +76,16 @@
 <script>
 export default {
 
+    data() {
+        return {
+            form: {
+                email: "",
+                name: "",
+                message: ""
+            }
+        }
+    },
+
     head: function() {
         return {
             title: {
@@ -84,21 +94,29 @@ export default {
         }
     },
 
-    created() {
-        var qs, js, q, s, d = document,
-            gi = d.getElementById,
-            ce = d.createElement,
-            gt = d.getElementsByTagName,
-            id = "typef_orm",
-            b = "https://embed.typeform.com/";
-        if (!gi.call(d, id)) {
-            js = ce.call(d, "script");
-            js.id = id;
-            js.src = b + "embed.js";
-            q = gt.call(d, "script")[0];
-            q.parentNode.insertBefore(js, q)
+    methods: {
+        submit() {
+            let url = "/api/contact";
+
+            axios
+                .post(url, {
+                    ...this.form
+                })
+                .then(
+                    (response) => {
+                        self.load = true;
+                        self.resetForm();
+                    }
+                )
+        },
+
+        resetForm() {
+            this.form.name = "";
+            this.form.email = "";
+            this.form.message = "";
         }
     }
+
 }
 
 </script>

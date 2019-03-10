@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <div class="flex flex-col justify-center">
-            <div>
+            <div class="mb-3">
                 <h1 class="text-5xl">4.0.4</h1>
             </div>
-            <div>
+            <div class="mt-3">
                 {{ $t('p404.error') }}
             </div>
             <div class="mt-16">

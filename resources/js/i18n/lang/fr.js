@@ -37,6 +37,11 @@ export default {
         web0: " Fièrement hébergé sur"
     },
 
+    work: {
+        title: "Travail",
+        sub_title: "List of the things I've done"
+    },
+
     p404: {
         error: "La page ne quitte pas",
         home: "Retour page d'accueil"

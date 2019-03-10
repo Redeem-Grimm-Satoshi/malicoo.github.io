@@ -45,13 +45,6 @@ export default {
 
     mounted() {
         this.check();
-        TweenMax.from(
-            '.title',
-            1, {
-                left: -20,
-                opacity: 0.5,
-                delay: 1
-            })
     },
 
 

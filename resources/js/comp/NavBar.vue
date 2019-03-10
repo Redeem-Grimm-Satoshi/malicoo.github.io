@@ -1,5 +1,5 @@
 <template>
-    <headroom class="border-very-light" :class="{ 'bg-contrast border-b-1' : pinned}" :onNotTop="switchHead" :onTop="switchFalse">
+    <headroom :class="{ 'border-very-light bg-contrast border-b-1' : pinned}" :onNotTop="switchHead" :onTop="switchFalse">
         <div class="container">
             <div id="my-id" uk-offcanvas="push">
                 <div class="uk-offcanvas-bar">

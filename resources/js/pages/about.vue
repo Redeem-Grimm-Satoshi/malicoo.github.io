@@ -22,17 +22,19 @@
                 </a>
             </div>
         </div>
+        <div class="container">
+            <skills />
+        </div>
     </div>
 </template>
 <script>
-import BlogMain from "./comp/BlogMain";
-import TweenMax from 'gsap/TweenMax';
+import skills from './comp/skills';
 
 const theme = 'red';
 export default {
 
     components: {
-        BlogMain
+        skills
     },
 
     head: function() {

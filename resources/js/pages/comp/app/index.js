@@ -9,8 +9,7 @@ export default class App {
 
     init() {
         this.initWebGL();
-        this.initGUI();
-        this.addListeners();
+
         this.animate();
         this.resize();
     }
@@ -20,9 +19,7 @@ export default class App {
         document.querySelector('.moi').appendChild(this.webgl.renderer.domElement);
     }
 
-    initGUI() {
-        this.gui = new GUIView(this);
-    }
+
 
     addListeners() {
         this.handlerAnimate = this.animate.bind(this);
@@ -30,8 +27,6 @@ export default class App {
         window.addEventListener('resize', this.resize.bind(this));
         window.addEventListener('keyup', this.keyup.bind(this));
 
-        const el = this.webgl.renderer.domElement;
-        el.addEventListener('click', this.click.bind(this));
     }
 
     animate() {
@@ -69,7 +64,4 @@ export default class App {
         if (e.keyCode == 71) { if (this.gui) this.gui.toggle(); }
     }
 
-    click(e) {
-        this.webgl.next();
-    }
 }

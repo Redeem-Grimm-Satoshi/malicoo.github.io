@@ -1,5 +1,8 @@
 <?php
 
+use App\Contact;
+use App\Mail\EmailContact;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +13,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/mail', function () {
+    $contact = Contact::first();
 
+    return new EmailContact($contact->email, $contact->name);
+});
 
 // Auth::routes();
 Route::group(

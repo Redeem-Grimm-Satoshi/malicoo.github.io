@@ -24,12 +24,12 @@ class PostController extends Controller
             $posts = $tag->posts()
                         ->with(['author','tags'])
                         ->live()
-                        ->orderBy('updated_at', 'DESC')
+                        ->orderBy('publish_date', 'DESC')
                         ->paginate($paginate);
         } else {
             $posts = Post::with(['author','tags'])
                     ->live()
-                    ->orderBy('updated_at', 'DESC')
+                    ->orderBy('publish_date', 'DESC')
                     ->paginate($paginate);
         }
 

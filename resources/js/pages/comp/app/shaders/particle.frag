@@ -16,7 +16,10 @@ void main() {
 	vec4 colA = texture2D(uTexture, puv);
 
 	// greyscale
-	float grey = colA.r * 0.21 + colA.g * 0.71 + colA.b * 0.07;
+	// float grey = colA.r * 0.21 + colA.g * 0.71 + colA.b * 0.07;
+
+	float grey = colA.r * 0.1 + colA.g / 0.5 + colA.b * 0.2;
+
 	vec4 colB = vec4(grey, grey, grey, 1.0);
 
 	// circle

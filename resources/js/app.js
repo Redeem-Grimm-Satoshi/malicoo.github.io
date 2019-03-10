@@ -11,7 +11,6 @@ import LightTimeline from 'vue-light-timeline';
 import VueHead from 'vue-head';
 import SocialSharing from 'vue-social-sharing';
 
-
 import App from './app/';
 import router from './router/';
 import inter from './i18n/';
